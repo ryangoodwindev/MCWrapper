@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MCWrapper</name>
+    </assembly>
+    <members>
+        <member name="T:MCWrapper.Extensions.MultiChainCoreServices">
+            <summary>
+            Extension methods for adding both MCWrapper.CLI and MCWrapper.RPC client libraries to an application's service container.
+            </summary>
+        </member>
+        <member name="M:MCWrapper.Extensions.MultiChainCoreServices.AddMultiChainCoreServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add both MCWrapper.CLI and MCWrapper.RPC client libraries to an application service container.
+            <para>RpcOptions, CliOptions, and RuntimeParamOptions are parsed from the local environment variable store.</para>
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.Extensions.MultiChainCoreServices.AddMultiChainCoreServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add both MCWrapper.CLI and MCWrapper.RPC client libraries to an application service container.
+            <para>RpcOptions, CliOptions, and RuntimeParamOptions are parsed from the local IConfiguration pipeline.</para>
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MCWrapper.Extensions.MultiChainCoreServices.AddMultiChainCoreServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{MCWrapper.RPC.Options.RpcOptions},System.Action{MCWrapper.CLI.Options.CliOptions},System.Action{MCWrapper.Ledger.Entities.Options.RuntimeParamOptions})">
+            <summary>
+            Add both MCWrapper.CLI and MCWrapper.RPC client libraries to an application service container.
+            <para>RpcOptions, CliOptions, and RuntimeParamOptions are parsed from explicitily configured and passed Action parameters.</para>
+            </summary>
+            <param name="services"></param>
+            <param name="rpcOptions"></param>
+            <param name="cliOptions"></param>
+            <param name="runtimeParamOptions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MCWrapper.Factory.MCWrapperClientFactory">
+            <summary>
+            MCWrapper client factory produces instances of the RpcClientFactory and the CliClientFactory
+            </summary>
+        </member>
+        <member name="M:MCWrapper.Factory.MCWrapperClientFactory.#ctor(MCWrapper.RPC.Ledger.Factory.RpcClientFactory,MCWrapper.CLI.Ledger.Factory.CliClientFactory)">
+            <summary>
+            Create a new MCWrapperClientFactory instance
+            </summary>
+            <param name="rpcClientFactory"></param>
+            <param name="cliClientFactory"></param>
+        </member>
+        <member name="P:MCWrapper.Factory.MCWrapperClientFactory.RpcClients">
+            <summary>
+            GET: MCWrapper Remote Procedure Call (RPC) client factory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:MCWrapper.Factory.MCWrapperClientFactory.CliClients">
+            <summary>
+            GET: MCWrapper Command Line Interface (CLI) client factory
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
