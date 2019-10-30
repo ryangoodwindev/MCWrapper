@@ -25,7 +25,7 @@ namespace MCWrapper.Extensions
         public static IServiceCollection AddMultiChainCoreServices(this IServiceCollection services)
         {
             services.AddMultiChainCoreCliServices();
-            services.AddMultiChainCoreRPCServices();
+            services.AddMultiChainCoreRpcServices();
 
             services.AddTransient<MCWrapperClientFactory>();
 
@@ -42,7 +42,7 @@ namespace MCWrapper.Extensions
         public static IServiceCollection AddMultiChainCoreServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddMultiChainCoreCliServices(configuration);
-            services.AddMultiChainCoreRPCServices(configuration);
+            services.AddMultiChainCoreRpcServices(configuration);
 
             services.AddTransient<MCWrapperClientFactory>();
 
@@ -62,7 +62,7 @@ namespace MCWrapper.Extensions
             Action<CliOptions> cliOptions, [Optional] Action<RuntimeParamOptions> runtimeParamOptions)
         {
             services.AddMultiChainCoreCliServices(cliOptions, runtimeParamOptions);
-            services.AddMultiChainCoreRPCServices(rpcOptions, runtimeParamOptions);
+            services.AddMultiChainCoreRpcServices(rpcOptions, runtimeParamOptions);
 
             services.AddTransient<MCWrapperClientFactory>();
 

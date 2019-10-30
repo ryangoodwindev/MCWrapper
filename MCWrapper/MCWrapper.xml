@@ -42,7 +42,7 @@
             MCWrapper client factory produces instances of the RpcClientFactory and the CliClientFactory
             </summary>
         </member>
-        <member name="M:MCWrapper.Factory.MCWrapperClientFactory.#ctor(MCWrapper.RPC.Ledger.Factory.RpcClientFactory,MCWrapper.CLI.Ledger.Factory.CliClientFactory)">
+        <member name="M:MCWrapper.Factory.MCWrapperClientFactory.#ctor(MCWrapper.RPC.Ledger.Clients.RpcClientFactory,MCWrapper.CLI.Ledger.Clients.CliClientFactory)">
             <summary>
             Create a new MCWrapperClientFactory instance
             </summary>

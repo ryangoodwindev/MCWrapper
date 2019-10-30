@@ -1,5 +1,5 @@
-﻿using MCWrapper.CLI.Ledger.Factory;
-using MCWrapper.RPC.Ledger.Factory;
+﻿using MCWrapper.CLI.Ledger.Clients;
+using MCWrapper.RPC.Ledger.Clients;
 
 namespace MCWrapper.Factory
 {
