@@ -37,25 +37,40 @@
             <param name="runtimeParamOptions"></param>
             <returns></returns>
         </member>
-        <member name="T:MCWrapper.Factory.MCWrapperClientFactory">
+        <member name="T:MCWrapper.Factory.IMultiChainClientFactory">
+            <summary>
+            MCWrapper MultiChain Core client factory
+            </summary>
+        </member>
+        <member name="P:MCWrapper.Factory.IMultiChainClientFactory.MultiChainCliClients">
+            <summary>
+            Supports all Command Line Interface-based clients
+            </summary>
+        </member>
+        <member name="P:MCWrapper.Factory.IMultiChainClientFactory.MultiChainRpcClients">
+            <summary>
+            Supports all JSON-RPC-based clients
+            </summary>
+        </member>
+        <member name="T:MCWrapper.Factory.MultiChainClientFactory">
             <summary>
             MCWrapper client factory produces instances of the RpcClientFactory and the CliClientFactory
             </summary>
         </member>
-        <member name="M:MCWrapper.Factory.MCWrapperClientFactory.#ctor(MCWrapper.RPC.Ledger.Clients.RpcClientFactory,MCWrapper.CLI.Ledger.Clients.CliClientFactory)">
+        <member name="M:MCWrapper.Factory.MultiChainClientFactory.#ctor(MCWrapper.RPC.Ledger.Clients.IMultiChainRpcClientFactory,MCWrapper.CLI.Ledger.Clients.IMultiChainCliClientFactory)">
             <summary>
             Create a new MCWrapperClientFactory instance
             </summary>
-            <param name="rpcClientFactory"></param>
-            <param name="cliClientFactory"></param>
+            <param name="multiChainRpcClientFactory"></param>
+            <param name="multiChainCliClientFactory"></param>
         </member>
-        <member name="P:MCWrapper.Factory.MCWrapperClientFactory.RpcClients">
+        <member name="P:MCWrapper.Factory.MultiChainClientFactory.MultiChainRpcClients">
             <summary>
             GET: MCWrapper Remote Procedure Call (RPC) client factory
             </summary>
             <returns></returns>
         </member>
-        <member name="P:MCWrapper.Factory.MCWrapperClientFactory.CliClients">
+        <member name="P:MCWrapper.Factory.MultiChainClientFactory.MultiChainCliClients">
             <summary>
             GET: MCWrapper Command Line Interface (CLI) client factory
             </summary>

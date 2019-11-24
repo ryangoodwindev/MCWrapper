@@ -27,7 +27,7 @@ namespace MCWrapper.Extensions
             services.AddMultiChainCoreCliServices();
             services.AddMultiChainCoreRpcServices();
 
-            services.AddTransient<MCWrapperClientFactory>();
+            services.AddTransient<IMultiChainClientFactory, MultiChainClientFactory>();
 
             return services;
         }
@@ -44,7 +44,7 @@ namespace MCWrapper.Extensions
             services.AddMultiChainCoreCliServices(configuration);
             services.AddMultiChainCoreRpcServices(configuration);
 
-            services.AddTransient<MCWrapperClientFactory>();
+            services.AddTransient<IMultiChainClientFactory, MultiChainClientFactory>();
 
             return services;
         }
@@ -64,7 +64,7 @@ namespace MCWrapper.Extensions
             services.AddMultiChainCoreCliServices(cliOptions, runtimeParamOptions);
             services.AddMultiChainCoreRpcServices(rpcOptions, runtimeParamOptions);
 
-            services.AddTransient<MCWrapperClientFactory>();
+            services.AddTransient<IMultiChainClientFactory, MultiChainClientFactory>();
 
             return services;
         }
