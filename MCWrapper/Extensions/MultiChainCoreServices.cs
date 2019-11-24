@@ -57,7 +57,7 @@ namespace MCWrapper.Extensions
         /// <param name="rpcOptions">JSON-RPC option values are used to configure blockchain clients</param>
         /// <param name="cliOptions">Command Line Interface options values are used to configure blockchain clients</param>
         /// <param name="runtimeParamOptions">Runtime parameters are used to configure the blockchain during runtime</param>
-        /// <returns></returns>
+        /// <returns></returns> 
         public static IServiceCollection AddMultiChainCoreServices(this IServiceCollection services, Action<RpcOptions> rpcOptions, 
             Action<CliOptions> cliOptions, [Optional] Action<RuntimeParamOptions> runtimeParamOptions)
         {
