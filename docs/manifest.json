@@ -1,18 +1,78 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/rgood/Source/Repos/mc_wrapper/docefx",
+  "source_base_path": "C:/Users/rgood/Source/Repos/mc_wrapper/MCWrapper",
   "xrefmap": "xrefmap.yml",
   "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MCWrapper.Extensions.MultiChainCoreServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MCWrapper.Extensions.MultiChainCoreServices.html",
+          "hash": "s3fgpzRw4v2FjaxpG4yLbQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MCWrapper.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MCWrapper.Extensions.html",
+          "hash": "COOxtzzMiyhiBMFhj0Qt7A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MCWrapper.Factory.IMultiChainClientFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MCWrapper.Factory.IMultiChainClientFactory.html",
+          "hash": "ekXB0FQjVuJvBUHnxd1q0Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MCWrapper.Factory.MultiChainClientFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MCWrapper.Factory.MultiChainClientFactory.html",
+          "hash": "tADoVSdNo5VgXvdaVTF41Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MCWrapper.Factory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MCWrapper.Factory.html",
+          "hash": "KfRBer8P2ba023QZMdm6zQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
     {
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "fdGH1O1pgIPWBTiMCmatTg=="
+          "hash": "vRFceHCwiEZ6hrvNhctlnw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -21,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "H5frWk4fYGIWHpFNp3BdfA=="
+          "hash": "mKa11F4HhlNz+CV2TL1Gxw=="
         }
       },
       "is_incremental": false,
@@ -33,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "f1SWI8G6N5KRYFHwWMfAiw=="
+          "hash": "nDorOhLNgpP8Qt/pp0AMew=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -57,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "0UVWou2dCL6F3Ud2aTO4aA=="
+          "hash": "PmCcbIn8JHC28V8jR3rWkA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -79,33 +139,37 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
+        "skipped_file_count": 0
       },
       "processors": {
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 5,
+          "skipped_file_count": 4
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
-        },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 0
         }
       }
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
