@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/docfx.vendor.css">
     <link rel="stylesheet" href="styles/docfx.css">
     <link rel="stylesheet" href="styles/main.css">
+     <link rel="stylesheet" href="styles/prism.css">
     <meta property="docfx:navrel" content="toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
@@ -94,8 +95,133 @@
 					</ul>
 				</ol>
 			</article>
-			<article>
-				<h2 id="configure-services">Configure Services:</h2>
+<article class="context wrap" id="_config" data-uid="">
+	<h2 id="configure-services">Configure Services:</h2>
+	<p>
+		Option #1 (preferred): This option is the most secure. Store the
+		MCWrapper RpcOptions and CliOptions as Environment Variables 
+		that are automatically loaded on startup. Simply call the 
+		<em>AddMultiChainCoreServices</em> extension method after configuring 
+		the environment. More information is available at our help page 
+		for this <a href="https://mcwrapper.com/configure-options">topic</a>.
+	</p>
+<pre><code class="language-dotnet">// Startup class of the Web App or Web API
+public class Startup
+{
+	public Startup(IConfiguration configuration)
+	{
+		Configuration = configuration;
+	}
+
+	public IConfiguration Configuration { get; }
+
+	public void ConfigureServices(IServiceCollection services)
+	{
+		// ... previous code removed for brevity
+
+		services.AddMultiChainCoreServices();
+	}
+
+	public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+	{
+		// ... remaining code removed for brevity
+	}
+}
+
+</code></pre>
+<br />
+
+<p>
+	Option #2: This option is the still somewhat secure, depending on the
+	production environment. Store the MCWrapper RpcOptions and CliOptions as
+	variables on an external configuration file (appsettings.json) that are 
+	automatically loaded on startup. Simply call the <em>AddMultiChainCoreServices</em>
+	extension method after configuring the file. More information is available at our help page for this
+	  <a href="https://mcwrapper.com/configure-options">topic</a>.
+</p>
+<pre><code class="language-dotnet">// Startup class of the Web App or Web API
+public class Startup
+{
+	public Startup(IConfiguration configuration)
+	{
+		Configuration = configuration;
+	}
+
+	public IConfiguration Configuration { get; }
+
+	public void ConfigureServices(IServiceCollection services)
+	{
+		// ... previous code removed for brevity
+
+		services.AddMultiChainCoreServices(Configuration);
+	}
+
+	public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+	{
+		// ... remaining code removed for brevity
+	}
+}
+
+</code></pre>
+
+<br />
+
+<p>
+	Option #3: This option is not secure and should only be used in non-production
+	environments. Explicitly pass the MCWrapper RpcOptions and CliOptions as
+	arguments into the <em>AddMultiChainCoreServices</em> extension method and they will be
+	loaded during startup. More information is available at our help page for this
+	  <a href="https://mcwrapper.com/configure-options">topic</a>.
+</p>
+<pre><code class="language-dotnet">// Startup class of the Web App or Web API
+public class Startup
+{
+	public Startup(IConfiguration configuration)
+	{
+		Configuration = configuration;
+	}
+
+	public IConfiguration Configuration { get; }
+
+	public void ConfigureServices(IServiceCollection services)
+	{
+		// ... previous code removed for brevity
+
+		services.AddMultiChainCoreServices(
+			rpcOptions => 
+			{
+				rpcOptions.ChainAdminAddress = "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t";
+				rpcOptions.ChainBurnAddress = "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS";
+
+				// or a remote node's address eg. NewChain@192.168.1.1:7764
+				rpcOptions.ChainHostname = "localhost";
+				rpcOptions.ChainName = "NewChain";
+				rpcOptions.ChainPassword = "EmjbtUBfbg2SikAXVnAJSQKmbeZhxbpSopsVKk58zrE";
+				rpcOptions.ChainRpcPort = 7764;
+				
+				// default is HTTP if this is left empty
+				rpcOptions.ChainSslPath = string.Empty;
+				rpcOptions.ChainUsername = "multichainrpc";
+				rpcOptions.ChainUseSsl = false;
+			},
+			cliOptions =>
+			{
+				cliOptions.ChainAdminAddress = "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t";
+				cliOptions.ChainBinaryLocation = string.Empty; // if empty default location is used
+				cliOptions.ChainBurnAddress = "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS";
+				cliOptions.ChainDefaultColdNodeLocation = string.Empty; // if empty default location is used
+				cliOptions.ChainDefaultLocation = string.Empty; // if empty default location is used
+				cliOptions.ChainName = "NewChain";
+			});
+	}
+
+	public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+	{
+		// ... remaining code removed for brevity
+	}
+}
+
+</code></pre>
 			</article>
           </div>
           
@@ -131,5 +257,6 @@
     <script type="text/javascript" src="styles/docfx.vendor.js"></script>
     <script type="text/javascript" src="styles/docfx.js"></script>
     <script type="text/javascript" src="styles/main.js"></script>
+    <script type="text/javascript" src="styles/prism.js"></script>
   </body>
 </html>
