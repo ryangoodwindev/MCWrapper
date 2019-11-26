@@ -187,6 +187,7 @@ public class Startup
 	loaded during startup. More information is available at our help page for this
 	  <a href="https://mcwrapper.com/configure-options">topic</a>.
 </p>
+<p>Your values will differ from ours, the values listed below are just an example.</p>
 <pre><code class="language-dotnet">// Startup class of the Web App or Web API
 public class Startup
 {
@@ -269,8 +270,9 @@ public class Startup
 <article class="context wrap" id="_environment" data-uid="">
 	<h2 id="environment-variables">Environment Variables:</h2>
 	<p>
-		When using the parameterless AddMultiChainCoreServices, AddMultiChainCoreRpcServices, AddMultiChainCoreCliServices
-		methods MCWrapper will depend on the local machine's Environment Variable store.
+		When using the parameterless AddMultiChainCoreServices method or the AddMultiChainCoreRpcServices
+		and AddMultiChainCoreCliServices methods MCWrapper will depend on the local machine's Environment
+		Variable store.
 	</p>
 	<p>
 		While depending on the Environment Variable store the following variable names are used.
@@ -278,30 +280,66 @@ public class Startup
 	<ul>
 		<li>Environment variable names used by both MCWrapper.RPC and MCWrapper.CLI</li>
 		<ul>
-			<li>ChainAdminAddress</li>
-			<li>ChainBurnAddress</li>
-			<li>ChainName</li>
+			<li>ChainAdminAddress (string)</li>
+			<li>ChainBurnAddress (string)</li>
+			<li>ChainName (string)</li>
 		</ul>
 		<li>Variable names used specifically by MCWrapper.RPC clients</li>
 		<ul>
-			<li>ChainPassword</li>
-			<li>ChainUsername</li>
-			<li>ChainHostname</li>
-			<li>ChainRpcPort</li>
-			<li>ChainSslPath</li>
-			<li>ChainUseSsl</li>
+			<li>ChainPassword (string)</li>
+			<li>ChainUsername (string)</li>
+			<li>ChainHostname (string)</li>
+			<li>ChainRpcPort (int)</li>
+			<li>ChainSslPath (string)</li>
+			<li>ChainUseSsl (bool)</li>
 		</ul>
 		<li>Variable names used specifically by MCWrapper.CLI clients</li>
 		<ul>
-			<li>ChainDefaultColdNodeLocation</li>
-			<li>ChainDefaultLocation</li>
-			<li>ChainBinaryLocation</li>
+			<li>ChainDefaultColdNodeLocation ()</li>
+			<li>ChainDefaultLocation ()</li>
+			<li>ChainBinaryLocation ()</li>
 		</ul>
 	</ul>
 </article>
 <article class="context wrap" id="_iconfig" data-uid="">
 	<h2 id="iconfiguration">IConfiguration:</h2>
+	<p>
+		When using the IConfiguration argument along with the AddMultiChainCoreServices method or the
+		AddMultiChainCoreRpcServices and AddMultiChainCoreCliServices methods MCWrapper will depend on
+		an external JSON Configuration file, generally named appsettings.json.
+	</p>
+	<p>
+		The external JSON configration file should contain the following variable names along with
+		their values.
+	</p>
+	<p>Your values will differ from ours, the values listed below are just an example.</p>
+	<pre><code class="language-json">{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
 
+  // values shared between RpcOptions and CliOptions
+  "ChainAdminAddress": "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t",
+  "ChainBurnAddress": "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS",
+  "ChainName": "NewChain",
+
+  // RpcOptions start here
+  "ChainPassword": "EmjbtUBfbg2SikAXVnAJSQKmbeZhxbpSopsVKk58zrE",
+  "ChainUsername": "multichainrpc",
+  "ChainHostname": "localhost",
+  "ChainRpcPort": 7764,
+  "ChainSslPath": "",
+  "ChainUseSsl": false,
+
+  // CliOptions start here, we leave them empty to indicate default locations should be used
+  "ChainDefaultColdNodeLocation": "",
+  "ChainDefaultLocation": "",
+  "ChainBinaryLocation": ""
+}
+</code></pre>
 </article>
           </div>
           
