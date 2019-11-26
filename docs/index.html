@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
   
@@ -119,7 +119,14 @@ public class Startup
 	{
 		// ... previous code removed for brevity
 
+		// First option, implement all MCWrapper RPC and CLI clients at once
 		services.AddMultiChainCoreServices();
+
+		// Another option is to implement the RPC and CLI clients separately,
+		// instead of using the AddMultiChainCoreServices method.
+		// Perhaps you only require one set of clients or the other, that is supported as well.
+		services.AddMultiChainCoreRpcServices();
+		services.AddMultiChainCoreCliServices();
 	}
 
 	public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -153,7 +160,14 @@ public class Startup
 	{
 		// ... previous code removed for brevity
 
+		// First option, implement all MCWrapper RPC and CLI clients at once
 		services.AddMultiChainCoreServices(Configuration);
+
+		// Another option is to implement the RPC and CLI clients separately,
+		// instead of using the AddMultiChainCoreServices method.
+		// Perhaps you only require one set of clients or the other, that is supported as well.
+		services.AddMultiChainCoreRpcServices(Configuration);
+		services.AddMultiChainCoreCliServices(Configuration);
 	}
 
 	public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -187,32 +201,60 @@ public class Startup
 	{
 		// ... previous code removed for brevity
 
-		services.AddMultiChainCoreServices(
-			rpcOptions => 
-			{
-				rpcOptions.ChainAdminAddress = "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t";
-				rpcOptions.ChainBurnAddress = "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS";
+		// First option, implement all MCWrapper RPC and CLI clients at once
+		services.AddMultiChainCoreServices(rpcOptions => 
+		{
+			rpcOptions.ChainAdminAddress = "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t";
+			rpcOptions.ChainBurnAddress = "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS";
+			rpcOptions.ChainPassword = "EmjbtUBfbg2SikAXVnAJSQKmbeZhxbpSopsVKk58zrE";
+			rpcOptions.ChainUsername = "multichainrpc";
+			// localhost or a remote node's address eg. NewChain@192.168.1.1:7764
+			rpcOptions.ChainHostname = "localhost";
+			rpcOptions.ChainName = "NewChain";
+			rpcOptions.ChainRpcPort = 7764;
+			// default is HTTP if this is left empty
+			rpcOptions.ChainSslPath = string.Empty;
+			rpcOptions.ChainUseSsl = false;
+		},
+		cliOptions =>
+		{
+			cliOptions.ChainAdminAddress = "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t";
+			cliOptions.ChainBurnAddress = "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS";
+			cliOptions.ChainName = "NewChain";
+			// if empty default location is used
+			cliOptions.ChainDefaultColdNodeLocation = string.Empty;
+			cliOptions.ChainDefaultLocation = string.Empty;
+			cliOptions.ChainBinaryLocation = string.Empty;
+		});
 
-				// or a remote node's address eg. NewChain@192.168.1.1:7764
-				rpcOptions.ChainHostname = "localhost";
-				rpcOptions.ChainName = "NewChain";
-				rpcOptions.ChainPassword = "EmjbtUBfbg2SikAXVnAJSQKmbeZhxbpSopsVKk58zrE";
-				rpcOptions.ChainRpcPort = 7764;
-				
-				// default is HTTP if this is left empty
-				rpcOptions.ChainSslPath = string.Empty;
-				rpcOptions.ChainUsername = "multichainrpc";
-				rpcOptions.ChainUseSsl = false;
-			},
-			cliOptions =>
-			{
-				cliOptions.ChainAdminAddress = "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t";
-				cliOptions.ChainBinaryLocation = string.Empty; // if empty default location is used
-				cliOptions.ChainBurnAddress = "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS";
-				cliOptions.ChainDefaultColdNodeLocation = string.Empty; // if empty default location is used
-				cliOptions.ChainDefaultLocation = string.Empty; // if empty default location is used
-				cliOptions.ChainName = "NewChain";
-			});
+		// Another option is to implement the RPC and CLI clients separately,
+		// instead of using the AddMultiChainCoreServices method.
+		// Perhaps you only require one set of clients or the other, that is supported as well.
+		services.AddMultiChainCoreRpcServices(rpcOptions =>
+		{
+			rpcOptions.ChainAdminAddress = "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t";
+			rpcOptions.ChainBurnAddress = "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS";
+			rpcOptions.ChainPassword = "EmjbtUBfbg2SikAXVnAJSQKmbeZhxbpSopsVKk58zrE";
+			rpcOptions.ChainUsername = "multichainrpc";
+			// localhost or a remote node's address eg. NewChain@192.168.1.1:7764
+			rpcOptions.ChainHostname = "localhost";
+			rpcOptions.ChainName = "NewChain";
+			rpcOptions.ChainRpcPort = 7764;
+			// default is HTTP if this is left empty
+			rpcOptions.ChainSslPath = string.Empty;
+			rpcOptions.ChainUseSsl = false;
+		});
+
+		services.AddMultiChainCoreCliServices(cliOptions =>
+		{
+			cliOptions.ChainAdminAddress = "1F5WvCAwc9sX6ZMJKE8GRZA6UQQPnxgB8FbU7t";
+			cliOptions.ChainBurnAddress = "1XXXXXXXDXXXXXXX7bXXXXXXVsXXXXXXXCT2tS";
+			cliOptions.ChainName = "NewChain";
+			// if empty default location is used
+			cliOptions.ChainDefaultColdNodeLocation = string.Empty;
+			cliOptions.ChainDefaultLocation = string.Empty;
+			cliOptions.ChainBinaryLocation = string.Empty;
+		});
 	}
 
 	public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -223,6 +265,44 @@ public class Startup
 
 </code></pre>
 			</article>
+
+<article class="context wrap" id="_environment" data-uid="">
+	<h2 id="environment-variables">Environment Variables:</h2>
+	<p>
+		When using the parameterless AddMultiChainCoreServices, AddMultiChainCoreRpcServices, AddMultiChainCoreCliServices
+		methods MCWrapper will depend on the local machine's Environment Variable store.
+	</p>
+	<p>
+		While depending on the Environment Variable store the following variable names are used.
+	</p>
+	<ul>
+		<li>Environment variable names used by both MCWrapper.RPC and MCWrapper.CLI</li>
+		<ul>
+			<li>ChainAdminAddress</li>
+			<li>ChainBurnAddress</li>
+			<li>ChainName</li>
+		</ul>
+		<li>Variable names used specifically by MCWrapper.RPC clients</li>
+		<ul>
+			<li>ChainPassword</li>
+			<li>ChainUsername</li>
+			<li>ChainHostname</li>
+			<li>ChainRpcPort</li>
+			<li>ChainSslPath</li>
+			<li>ChainUseSsl</li>
+		</ul>
+		<li>Variable names used specifically by MCWrapper.CLI clients</li>
+		<ul>
+			<li>ChainDefaultColdNodeLocation</li>
+			<li>ChainDefaultLocation</li>
+			<li>ChainBinaryLocation</li>
+		</ul>
+	</ul>
+</article>
+<article class="context wrap" id="_iconfig" data-uid="">
+	<h2 id="iconfiguration">IConfiguration:</h2>
+
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
