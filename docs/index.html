@@ -286,13 +286,13 @@ public class Startup
 					While depending on the Environment Variable store the following variable names are used.
 				</p>
 				<ul>
-					<li>Environment variable names used by both MCWrapper.RPC and MCWrapper.CLI</li>
+					<li>Environment variable names required by both MCWrapper.RPC and MCWrapper.CLI</li>
 					<ul>
 						<li>ChainAdminAddress (string)</li>
 						<li>ChainBurnAddress (string)</li>
 						<li>ChainName (string)</li>
 					</ul>
-					<li>Variable names used specifically by MCWrapper.RPC clients</li>
+					<li>Variable names required specifically by MCWrapper.RPC clients</li>
 					<ul>
 						<li>ChainPassword (string)</li>
 						<li>ChainUsername (string)</li>
@@ -301,7 +301,7 @@ public class Startup
 						<li>ChainSslPath (string)</li>
 						<li>ChainUseSsl (bool)</li>
 					</ul>
-					<li>Variable names used specifically by MCWrapper.CLI clients</li>
+					<li>Variable names required specifically by MCWrapper.CLI clients</li>
 					<ul>
 						<li>ChainDefaultColdNodeLocation (string)</li>
 						<li>ChainDefaultLocation (string)</li>
@@ -359,7 +359,7 @@ public class Startup
 				<p>
 					The default locations are as follows.
 				</p>
-				<p>For Windows Environments</p>
+				<p><strong>For Windows Environments</strong></p>
 				<ul>
 					<li>The default <em>ChainBinaryLocation</em> is auto-detected at either C:\ or C:\multichain</li>
 					<ul>
@@ -388,13 +388,13 @@ public class Startup
 					<li>The default <em>ChainDefaultColdNodeLocation</em> is auto-detected at C:\Users\&lt;Current Local User&gt;\AppData\Roaming\MultiChainCold</li>
 					<ul>
 						<li>
-							The <em>ChainDefaultColdNodeLocation</em> more or less serves the same function as the <em>ChainDefaultLocation</em>, accept the
+							The <em>ChainDefaultColdNodeLocation</em> more or less serves the same function as the <em>ChainDefaultLocation</em>, except the
 							<em>ChainDefaultColdNodeLocation</em> is for cold nodes instead of hot nodes.
 						</li>
 					</ul>
 				</ul>
 
-				<p>For Linux Environments</p>
+				<p><strong>For Linux Environments</strong></p>
 				<p>Disclaimer: We haven't fully tested or implemented MCWrapper.CLI to work with Linux, we are hoping to accomplish this very soon.</p>
 				<ul>
 					<li>The default <em>ChainBinaryLocation</em> is auto-detected at /usr/local/bin</li>
@@ -424,12 +424,12 @@ public class Startup
 				<li>The default <em>ChainDefaultColdNodeLocation</em> is auto-detected at ./multichain-cold</li>
 				<ul>
 					<li>
-						The <em>ChainDefaultColdNodeLocation</em> more or less serves the same function as the <em>ChainDefaultLocation</em>, accept the
+						The <em>ChainDefaultColdNodeLocation</em> more or less serves the same function as the <em>ChainDefaultLocation</em>, except the
 						<em>ChainDefaultColdNodeLocation</em> is for cold nodes instead of hot nodes.
 					</li>
 				</ul>
 			</ul>
-			<p>For MacOS Environments</p>
+			<p><strong>For MacOS Environments</strong></p>
 			<p>No! (maybe someday, perhaps)</p>
 		</article>
   	</div>
