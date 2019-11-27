@@ -310,9 +310,9 @@ public class Startup
 		</ul>
 		<li>Variable names used specifically by MCWrapper.CLI clients</li>
 		<ul>
-			<li>ChainDefaultColdNodeLocation ()</li>
-			<li>ChainDefaultLocation ()</li>
-			<li>ChainBinaryLocation ()</li>
+			<li>ChainDefaultColdNodeLocation (string)</li>
+			<li>ChainDefaultLocation (string)</li>
+			<li>ChainBinaryLocation (string)</li>
 		</ul>
 	</ul>
 </article>
@@ -359,13 +359,84 @@ public class Startup
 <article class="context wrap" id="_default-locations" data-uid="">
 	<h2 id="default-locations">Default Locations:</h2>
 	<p>
-		When using the MCWrapper.CLI clients if no values is assigned to the ChainDefaultColdNodeLocation,
+		When using the MCWrapper.CLI clients if no value is assigned to the ChainDefaultColdNodeLocation,
 		ChainDefaultLocation, or the ChainBinaryLocation then default values are used within MCWrapper.CLI.
 	</p>
 	<p>
-		The external JSON configration file should contain the following variable names along with
-		their values.
+		The default locations are as follows.
 	</p>
+	<p>For Windows Environments</p>
+	<ul>
+		<li>The default <em>ChainBinaryLocation</em> is auto-detected at either C:\ or C:\multichain</li>
+		<ul>
+			<li>
+				The <em>ChainBinaryLocation</em> is where multichaind.exe, multichain-cli.exe, multichaind-cold.exe, and multichain-util.exe will be 	stored.
+			</li>
+			<li>
+				MCWrapper.CLI requires access to this location due to not using JSON-RPC HTTP connections. Instead MCWrapper.CLI interacts
+				directly with the MultiChain Core binary files, passing arguments directly to the executables.
+			</li>
+			<li>
+				While MCWrapper.CLI is much slower than MCWrapper.RPC, due to interacting with the executables, MCWrapper.CLI is much more secure
+				since we are not broadcasting JSON-RPC calls via HTTP/HTTPS connections.
+			</li>
+		</ul>
+		<li>The default <em>ChainDefaultLocation</em> is auto-detected at C:\Users\&lt;Current Local User&gt;\AppData\Roaming\MultiChain</li>
+		<ul>
+			<li>
+				The <em>ChainDefaultLocation</em> is where existing hot nodes are located on the local machine and where new hot nodes can be
+				created by MCWrapper.CLI.
+			</li>
+			<li>
+				Note: MCWrapper.CLI does support creation of new hot or cold nodes and has the ability to start a node since we interact directly with the MultiChain Core executables.MCWrapper.RPC does not support these features since it is limited to the blockchain methods available over JSON-RPC. 
+			</li>
+		</ul>
+		<li>The default <em>ChainDefaultColdNodeLocation</em> is auto-detected at C:\Users\&lt;Current Local User&gt;\AppData\Roaming\MultiChainCold</li>
+		<ul>
+			<li>
+				The <em>ChainDefaultColdNodeLocation</em> more or less serves the same function as the <em>ChainDefaultLocation</em>, accept the
+				<em>ChainDefaultColdNodeLocation</em> is for cold nodes instead of hot nodes.
+			</li>
+		</ul>
+	</ul>
+
+	<p>For Linux Environments</p>
+	<p>Disclaimer: We haven't fully tested or implemented MCWrapper.CLI to work with Linux, we are hoping to accomplish this very soon.</p>
+	<ul>
+		<li>The default <em>ChainBinaryLocation</em> is auto-detected at /usr/local/bin</li>
+		<ul>
+			<li>
+				The <em>ChainBinaryLocation</em> is where multichaind.exe, multichain-cli.exe, multichaind-cold.exe, and multichain-util.exe will be 	stored.
+			</li>
+			<li>
+				MCWrapper.CLI requires access to this location due to not using JSON-RPC HTTP connections. Instead MCWrapper.CLI interacts
+				directly with the MultiChain Core binary files, passing arguments directly to the executables.
+			</li>
+			<li>
+				While MCWrapper.CLI is much slower than MCWrapper.RPC, due to interacting with the executables, MCWrapper.CLI is much more secure
+				since we are not broadcasting JSON-RPC calls via HTTP/HTTPS connections.
+			</li>
+		</ul>
+		<li>The default <em>ChainDefaultLocation</em> is auto-detected at ./multichain</li>
+		<ul>
+			<li>
+				The <em>ChainDefaultLocation</em> is where existing hot nodes are located on the local machine and where new hot nodes can be
+				created by MCWrapper.CLI.
+			</li>
+			<li>
+				Note: MCWrapper.CLI does support creation of new hot or cold nodesand has the ability to start a node since we interact directly with the MultiChain Core executables. MCWrapper.RPC does not support these features since it is limited to the blockchain methods available over JSON-RPC. 
+			</li>
+		</ul>
+		<li>The default <em>ChainDefaultColdNodeLocation</em> is auto-detected at ./multichain-cold</li>
+		<ul>
+			<li>
+				The <em>ChainDefaultColdNodeLocation</em> more or less serves the same function as the <em>ChainDefaultLocation</em>, accept the
+				<em>ChainDefaultColdNodeLocation</em> is for cold nodes instead of hot nodes.
+			</li>
+		</ul>
+	</ul>
+	<p>For MacOS Environments</p>
+	<p>No! (maybe someday, perhaps)</p>
 </article>
           </div>
           
