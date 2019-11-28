@@ -27,7 +27,7 @@ IMultiChainCliOffChain &amp; IMultiChainRpcOffChain :....: Provides access to Of
 purgepublisheditems, purgestreamitems, retrievestreamitems
 
 IMultiChainCliControl &amp; IMultiChainRpcControl :.....: Provides access to Control MultChain Core methods.
-clearmempool, getblockchainparams, getinfo, getruntimeparams, 
+clearmempool, getblockchainparams, getinfo, getinitstatus, getruntimeparams, 
 help, pause, resume, setlastblock, setruntimeparam, stop
 
 IMultiChainCliGeneral &amp; IMultiChainRpcGeneral :.....: Provides access to General MultChain Core methods
