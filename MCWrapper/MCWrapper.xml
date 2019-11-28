@@ -6,36 +6,36 @@
     <members>
         <member name="T:MCWrapper.Extensions.MultiChainCoreServices">
             <summary>
-            Extension methods for adding both MCWrapper.CLI and MCWrapper.RPC client libraries to an application's service container.
+            Extension methods for adding both MCWrapper.CLI and MCWrapper.RPC client collections to an application's IServiceCollection dependency injection pipeline service container.
             </summary>
         </member>
         <member name="M:MCWrapper.Extensions.MultiChainCoreServices.AddMultiChainCoreServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Add both MCWrapper.CLI and MCWrapper.RPC client libraries to an application service container.
-            <para>RpcOptions, CliOptions, and RuntimeParamOptions are parsed from the local environment variable store.</para>
+            Extension method for adding both MCWrapper.CLI and MCWrapper.RPC client collections to an application's IServiceCollection dependency injection pipeline service container.
+            <para>RpcOptions, CliOptions, and RuntimeParamOptions are parsed from the local machine's environment variable store or Secret Manager.</para>
             </summary>
-            <param name="services"></param>
+            <param name="services">Service collection comprised of various services</param>
             <returns></returns>
         </member>
         <member name="M:MCWrapper.Extensions.MultiChainCoreServices.AddMultiChainCoreServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            Add both MCWrapper.CLI and MCWrapper.RPC client libraries to an application service container.
-            <para>RpcOptions, CliOptions, and RuntimeParamOptions are parsed from the local IConfiguration pipeline.</para>
+            Extension method for adding both MCWrapper.CLI and MCWrapper.RPC client collections to an application's IServiceCollection dependency injection pipeline service container.
+            <para>RpcOptions, CliOptions, and RuntimeParamOptions are parsed from the local IConfiguration pipeline passed via <paramref name="configuration"/> parameter.</para>
             </summary>
-            <param name="services"></param>
-            <param name="configuration"></param>
+            <param name="services">Service collection comprised of various services</param>
+            <param name="configuration">Configuration pipeline is used to access configuration files and Secret Manager</param>
             <returns></returns>
         </member>
         <member name="M:MCWrapper.Extensions.MultiChainCoreServices.AddMultiChainCoreServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{MCWrapper.RPC.Options.RpcOptions},System.Action{MCWrapper.CLI.Options.CliOptions},System.Action{MCWrapper.Ledger.Entities.Options.RuntimeParamOptions})">
             <summary>
-            Add both MCWrapper.CLI and MCWrapper.RPC client libraries to an application service container.
-            <para>RpcOptions, CliOptions, and RuntimeParamOptions are parsed from explicitily configured and passed Action parameters.</para>
+            Extension method for adding both MCWrapper.CLI and MCWrapper.RPC client collections to an application's IServiceCollection dependency injection pipeline service container.
+            <para>RpcOptions, CliOptions, and RuntimeParamOptions are parsed from explicitily configured and passed via <paramref name="rpcOptions"/>, <paramref name="cliOptions"/>, and <paramref name="runtimeParamOptions"/> Action parameters.</para>
             </summary>
-            <param name="services"></param>
-            <param name="rpcOptions"></param>
-            <param name="cliOptions"></param>
-            <param name="runtimeParamOptions"></param>
-            <returns></returns>
+            <param name="services">Service collection comprised of various services</param>
+            <param name="rpcOptions">JSON-RPC option values are used to configure blockchain clients</param>
+            <param name="cliOptions">Command Line Interface options values are used to configure blockchain clients</param>
+            <param name="runtimeParamOptions">Runtime parameters are used to configure the blockchain during runtime</param>
+            <returns></returns> 
         </member>
         <member name="T:MCWrapper.Factory.IMultiChainClientFactory">
             <summary>
