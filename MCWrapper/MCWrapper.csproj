@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.0;netcoreapp2.2;netcoreapp2.1</TargetFrameworks>
-    <AssemblyVersion>5.0.4.0</AssemblyVersion>
-    <FileVersion>5.0.4.0</FileVersion>
-    <Version>5.0.4</Version>
+    <AssemblyVersion>5.1.4.0</AssemblyVersion>
+    <FileVersion>5.1.4.0</FileVersion>
+    <Version>5.1.4</Version>
     <Authors>Myndblock LLC, Ryan Goodwin</Authors>
     <Company>Myndblock LLC</Company>
     <Copyright>2019</Copyright>
@@ -16,7 +16,7 @@
     <Description>A compilation of the MCWrapper.RPC and MCWrapper.CLI libraries with a new extension method permitting the additional of both the MultiChain Core RPC and CLI client factories using a single line of code. MCWrapper 3.0.0 also offers a new MCWrapperClientFactory that lazy loads the RPC and CLI client collections.</Description>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageReleaseNotes>Updated to MCWrapper.RPC v5.0.5 and MCWrapper.CLI v4.0.4
+    <PackageReleaseNotes>Updated to MCWrapper.RPC v5.1.7 and MCWrapper.CLI v4.1.5
 
 Added support for MultiChain Core v2.0.3, 'getinitstatus' method is now supported.
 
@@ -120,8 +120,8 @@ getrawtransaction, sendrawtransaction, signrawtransaction</PackageReleaseNotes>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="MCWrapper.RPC" Version="5.0.6" />
-    <PackageReference Include="MCWrapper.CLI" Version="4.0.5" />
+    <PackageReference Include="MCWrapper.RPC" Version="5.1.7" />
+    <PackageReference Include="MCWrapper.CLI" Version="4.1.5" />
   </ItemGroup>
 
 </Project>
