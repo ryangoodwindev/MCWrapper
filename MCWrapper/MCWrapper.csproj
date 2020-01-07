@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.0;netcoreapp2.2;netcoreapp2.1</TargetFrameworks>
-    <AssemblyVersion>5.1.6.0</AssemblyVersion>
-    <FileVersion>5.1.6.0</FileVersion>
-    <Version>5.1.6</Version>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.2;netcoreapp2.1;netstandard2.1</TargetFrameworks>
+    <AssemblyVersion>6.0.0.0</AssemblyVersion>
+    <FileVersion>6.0.0.0</FileVersion>
+    <Version>6.0.0</Version>
     <Authors>Myndblock LLC, Ryan Goodwin</Authors>
     <Company>Myndblock LLC</Company>
     <Copyright>2019</Copyright>
@@ -16,7 +16,20 @@
     <Description>A compilation of the MCWrapper.RPC and MCWrapper.CLI libraries with a new extension method permitting the additional of both the MultiChain Core RPC and CLI client factories using a single line of code.</Description>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageReleaseNotes>Updated to MCWrapper.RPC v5.1.10 and MCWrapper.CLI v4.1.12
+    <PackageReleaseNotes>
+Update to MCWrapper.CLI 5.0.0 and MCWrapper.RPC 6.0.0
+
+A new Target Framework has been added, netstandard2.1.
+
+Prior to the release we are targeting:
+netcoreapp3.0;netcoreapp2.2;netcoreapp2.1
+
+Post release we will target:
+netcoreapp3.1;netcoreapp2.2;netcoreapp2.1;netstandard2.1
+
+We added several more data models to make our return types more strongly typed.
+
+Many methods return generic object types, they now return more specific accurate data model types or base types (string, bool, int, etc...).
 
 Please view all supported MultiChain Community Edition methods here, https://mcwrapper.com/supported-methods</PackageReleaseNotes>
     <PackageTags>MultiChain,CSharp,DotNetCore,Blockchain,API</PackageTags>
@@ -33,6 +46,14 @@ Please view all supported MultiChain Community Edition methods here, https://mcw
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
@@ -52,9 +73,9 @@ Please view all supported MultiChain Community Edition methods here, https://mcw
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MCWrapper.CLI" Version="5.0.0" />
+    <PackageReference Include="MCWrapper.RPC" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="MCWrapper.RPC" Version="5.1.10" />
-    <PackageReference Include="MCWrapper.CLI" Version="4.1.12" />
   </ItemGroup>
 
 </Project>
